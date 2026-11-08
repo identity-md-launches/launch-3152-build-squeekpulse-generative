@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101210">
+  <title>SqueekPulse — Small paws. Infinite possibilities.</title>
+  <meta name="description" content="A living particle canvas powered by SqueekChain's hamster wheel. Explore Nebula, Vortex, Rain and Pulse, shape the motion, and save a moment.">
+  <meta property="og:title" content="SqueekPulse — Art, powered by a hamster.">
+  <meta property="og:description" content="A real wheel. A living canvas. Turn SqueekChain telemetry into your own particle universe.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./src/styles.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#experience">Skip to canvas</a>
+  <header class="site-header page-width">
+    <a class="brand" href="./" aria-label="SqueekPulse home"><img src="./assets/favicon.svg" width="36" height="36" alt=""><span>Squeek<span class="brand-light">Pulse</span></span></a>
+    <nav aria-label="Information">
+      <button class="text-button" id="about-open" aria-label="How it works"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg><span>How it works</span></button>
+      <a class="external-link" href="https://squeekchain.com" target="_blank" rel="noopener noreferrer">SqueekChain <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+    </nav>
+  </header>
+  <noscript><p class="page-width">SqueekPulse needs JavaScript for its canvas and live readings. Enable JavaScript, then reload this page.</p></noscript>
+
+  <main class="page-width" id="experience">
+    <div class="intro">
+      <div><h1>Small paws. <span>Infinite possibilities.</span></h1><p>A living particle canvas, powered by a real hamster wheel.</p></div>
+      <div class="connection" id="connection" data-state="connecting"><span class="status-dot" aria-hidden="true"></span><span id="connection-label">Connecting to SqueekChain</span></div>
+    </div>
+
+    <div class="workspace">
+      <section class="artwork" aria-label="Interactive particle canvas">
+        <div class="canvas-stage" id="canvas-stage">
+          <canvas id="art-canvas" tabindex="0" role="img" aria-label="Nebula particle artwork. Move your pointer to bend the field, or tap to create a ripple. Press Space to pause." aria-describedby="canvas-hint"></canvas>
+          <div class="scene-top">
+            <div class="scene-title"><span class="scene-symbol" aria-hidden="true">✳</span><span id="scene-name">Nebula</span><span class="scene-divider" aria-hidden="true"></span><span class="scene-edition">01 / 04</span></div>
+            <button class="icon-button fullscreen-button" id="fullscreen" aria-label="Enter fullscreen" title="Enter fullscreen"><svg class="icon" aria-hidden="true"><use href="#i-expand"/></svg></button>
+          </div>
+          <div class="canvas-center-note" id="canvas-error" hidden>Canvas is unavailable in this browser. Try a current browser to see the artwork.</div>
+          <div class="scene-bottom"><span id="canvas-hint"><svg class="icon" aria-hidden="true"><use href="#i-pointer"/></svg><span class="pointer-hint">Move to bend the field</span><span class="touch-hint">Touch to stir the particles</span></span><span class="scene-count"><span id="particle-count">1,600</span> particles</span></div>
+          <div class="paused-indicator" id="paused-indicator" hidden><svg class="icon" aria-hidden="true"><use href="#i-pause"/></svg>Paused</div>
+        </div>
+        <div class="canvas-toolbar">
+          <button class="button primary" id="pause" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-pause" id="pause-icon"/></svg><span id="pause-label">Pause</span></button>
+          <button class="button secondary" id="shuffle" title="Create a new arrangement"><svg class="icon" aria-hidden="true"><use href="#i-shuffle"/></svg><span>Reshuffle</span></button>
+          <div class="toolbar-spacer"></div>
+          <button class="button secondary save-button" id="save"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span>Save image</span></button>
+        </div>
+      </section>
+
+      <aside class="controls" aria-label="Canvas settings">
+        <div class="controls-heading"><h2>Make it your own</h2><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg></div>
+        <fieldset class="mode-fieldset"><legend>Visualization</legend>
+          <div class="modes" role="group" aria-label="Visualization mode">
+            <button class="mode-button" data-mode="nebula" aria-pressed="true"><canvas class="mode-preview" data-preview="nebula" width="240" height="100" aria-hidden="true"></canvas><span class="mode-label">Nebula <svg class="mode-check icon" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+            <button class="mode-button" data-mode="vortex" aria-pressed="false"><canvas class="mode-preview" data-preview="vortex" width="240" height="100" aria-hidden="true"></canvas><span class="mode-label">Vortex <svg class="mode-check icon" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+            <button class="mode-button" data-mode="rain" aria-pressed="false"><canvas class="mode-preview" data-preview="rain" width="240" height="100" aria-hidden="true"></canvas><span class="mode-label">Rain <svg class="mode-check icon" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+            <button class="mode-button" data-mode="pulse" aria-pressed="false"><canvas class="mode-preview" data-preview="pulse" width="240" height="100" aria-hidden="true"></canvas><span class="mode-label">Pulse <svg class="mode-check icon" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+          </div>
+        </fieldset>
+        <p class="mode-description" id="mode-description">A soft constellation, always becoming.</p>
+        <div class="sliders">
+          <div class="slider-setting"><div class="setting-label"><label for="density">Particle density</label><output for="density" id="density-value">1,600</output></div><input id="density" type="range" min="400" max="2800" step="100" value="1600"></div>
+          <div class="slider-setting"><div class="setting-label"><label for="intensity">Motion intensity</label><output for="intensity" id="intensity-value">1.0×</output></div><input id="intensity" type="range" min="25" max="200" step="5" value="100"></div>
+          <div class="slider-setting"><div class="setting-label"><label for="trails">Trail length</label><output for="trails" id="trails-value">65%</output></div><input id="trails" type="range" min="0" max="95" step="5" value="65"></div>
+        </div>
+        <label class="live-setting" for="live-influence"><span><span class="live-label">Follow the wheel</span><span class="setting-help">Let real activity shape the art</span></span><input type="checkbox" role="switch" id="live-influence" checked><span class="switch-track" aria-hidden="true"></span></label>
+        <button class="text-button reset-button" id="reset"><svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg>Reset settings</button>
+      </aside>
+    </div>
+
+    <section class="telemetry" aria-labelledby="telemetry-title">
+      <div class="telemetry-heading"><h2 id="telemetry-title">A tiny wheel. A whole universe.</h2><div class="feed-actions"><span id="updated-label">Waiting for the first reading</span><button class="icon-button" id="refresh" aria-label="Refresh telemetry" title="Refresh telemetry"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg></button></div></div>
+      <div class="metrics">
+        <div class="metric"><div class="metric-label"><svg class="icon" aria-hidden="true"><use href="#i-speed"/></svg>Wheel speed</div><div class="metric-reading"><span id="rpm">–</span><span class="unit">rpm</span></div><p>Sets the pace of the particles</p></div>
+        <div class="metric"><div class="metric-label"><svg class="icon" aria-hidden="true"><use href="#i-activity"/></svg>Wheel state</div><div class="metric-reading"><span class="wheel-state-dot" id="wheel-dot" aria-hidden="true"></span><span id="wheel-state">Waiting</span></div><p id="wheel-caption">Listening for a little movement</p></div>
+        <div class="metric"><div class="metric-label"><svg class="icon" aria-hidden="true"><use href="#i-block"/></svg>Block progress</div><div class="metric-reading"><span id="block-progress">–</span><span class="unit">%</span></div><p>Shifts the colors of the field</p><div class="progress-track" role="progressbar" aria-label="Confirmed block progress" aria-valuemin="0" aria-valuemax="100" aria-valuetext="Waiting for data" id="block-bar"><span></span></div></div>
+        <div class="metric"><div class="metric-label"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>SQK mined</div><div class="metric-reading"><span id="mined">–</span><span class="unit">SQK</span></div><p>Adds a little light to the canvas</p></div>
+      </div>
+      <div class="data-notice" id="data-notice" hidden><span id="data-notice-text"></span><button class="text-button" id="retry">Try again <svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg></button></div>
+    </section>
+  </main>
+
+  <footer class="site-footer page-width"><span><span class="footer-spark" aria-hidden="true">✳</span> Art, powered by a hamster.</span><span>Public SqueekChain data <span class="footer-separator">·</span> Every 15 seconds <a href="https://docs.squeekchain.com" target="_blank" rel="noopener noreferrer" aria-label="Read SqueekChain documentation"><svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a></span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <span class="sr-only" role="status" aria-live="polite" id="announcement"></span>
+
+  <dialog id="about-dialog" aria-labelledby="about-title">
+    <div class="dialog-heading"><h2 id="about-title">One wheel. Endless expression.</h2><button class="icon-button" id="about-close" aria-label="Close explanation"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p>SqueekPulse turns SqueekChain’s real hamster wheel telemetry into generative particle art. Every reading leaves its own impression.</p>
+    <dl class="mapping-list"><div><dt>RPM → Motion</dt><dd>A faster wheel makes the particles travel faster.</dd></div><div><dt>Block progress → Color</dt><dd>Confirmed block progress shifts the palette from green through blue.</dd></div><div><dt>Running → Energy</dt><dd>The field brightens and expands when the wheel is spinning. At rest, it drifts gently.</dd></div><div><dt>SQK mined → Light</dt><dd>The amount mined adds a subtle glow to each particle.</dd></div></dl>
+    <p>Move your pointer over the canvas, or touch it, to stir the field. Use <kbd>Space</kbd> on the canvas to pause. Save image downloads the current artwork as a PNG.</p>
+    <p class="source-note">Readings refresh every 15 seconds from <a href="https://api.squeekchain.com/v1/status" target="_blank" rel="noopener noreferrer">/v1/status</a> and <a href="https://api.squeekchain.com/v1/economy/state" target="_blank" rel="noopener noreferrer">/v1/economy/state</a>. If a source fails, its last reading is marked stale. Without fresh wheel data, the canvas uses a clearly labeled ambient drift.</p>
+    <button class="button primary" id="about-done">Back to the canvas <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+  </dialog>
+
+  <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M3 6h3c5 0 7 12 12 12h3m-4-4 4 4-4 4M3 18h3c2 0 3-2 4-4m4-4c1-2 2-4 4-4h3m-4-4 4 4-4 4"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7a9 9 0 1 0 1 8M20 2v6h-6"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6M12 7v5l3 2"/></symbol>
+    <symbol id="i-pointer" viewBox="0 0 24 24"><path d="m5 3 14 10-7 1-3 7Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17 17 7M6 7h11v11"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 4m0 3h.01"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h6m4 0h6M4 17h10m4 0h2M10 4v6m4 4v6"/></symbol>
+    <symbol id="i-speed" viewBox="0 0 24 24"><path d="M4 18a9 9 0 1 1 16 0M12 13l5-5M5 14h1m12 0h1M8 6l1 1m3-3v2"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M2 12h5l3-8 4 16 3-8h5"/></symbol>
+    <symbol id="i-block" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5Zm-9 5v9l9 5 9-5V8M12 13v9"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 2v4m-2-2h4"/></symbol>
+  </defs></svg>
+</body>
+</html>

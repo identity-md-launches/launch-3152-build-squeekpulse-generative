@@ -1,0 +1,6 @@
+# Explicit submission budget: this file <= 512 bytes; all matches below = 0 submitted bytes.
+**/node_modules/
+**/.cache/
+**/.npm/
+**/.vite/
+/test/scratch/
